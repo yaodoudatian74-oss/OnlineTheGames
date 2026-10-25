@@ -1,0 +1,51 @@
+<title>無人島サバイバル APK</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@800&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap">
+<style>
+/* Layout: one narrow column like a castaway's notebook page; the download button is the only loud element */
+:root{
+ --bg:#f3eee2;--card:#fbf8f0;--fg:#1d2a25;--muted:#5d6b63;--line:#d9d0bc;--accent:#0f6a72;--accent-fg:#f6f1e4;--sand:#c9a96a;
+ --f-disp:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;--f-body:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1a17;--card:#16231f;--fg:#f1e7cf;--muted:#a9b3a7;--line:#2c3b35;--accent:#4fb6b0;--accent-fg:#0f1a17;--sand:#d8b97a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1a17;--card:#16231f;--fg:#f1e7cf;--muted:#a9b3a7;--line:#2c3b35;--accent:#4fb6b0;--accent-fg:#0f1a17;--sand:#d8b97a;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:15px/1.7 var(--f-body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 40px}
+main{max-width:560px;margin:0 auto;display:grid;gap:22px}
+.eyebrow{font-size:12px;letter-spacing:.3em;color:var(--muted)}
+h1{font:800 clamp(28px,7vw,40px)/1.15 var(--f-disp);margin:4px 0 0;text-wrap:balance}
+.lead{color:var(--muted);margin:0}
+.dl{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--accent);color:var(--accent-fg);text-decoration:none;font-weight:700;font-size:18px;padding:18px 20px;border-radius:10px;min-height:56px}
+.dl:focus-visible{outline:3px solid var(--sand);outline-offset:3px}
+.dl svg{width:22px;height:22px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 18px 8px}
+h2{font:800 18px var(--f-disp);margin:0 0 8px}
+ol{margin:0;padding-left:1.4em;display:grid;gap:8px}
+ol li{padding-left:2px}
+.note{font-size:13px;color:var(--muted);margin:10px 0}
+.alt{font-size:14px}
+.alt a{color:var(--accent)}
+</style>
+<main>
+ <div>
+  <div class="eyebrow">ANDROID ・ APK</div>
+  <h1>無人島サバイバル</h1>
+ </div>
+ <p class="lead">REALISTIC ISLAND SURVIVAL のAndroid版です。ゲーム本体が中に入っているので、インストール後はオフラインでも遊べます。</p>
+ <a class="dl" id="dl" href="https://raw.githubusercontent.com/yaodoudatian74-oss/OnlineTheGames/main/island-survival/island-survival.apk" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m6 10 6 6 6-6"/><path d="M4 20h16"/></svg>
+  APKをダウンロード
+ </a>
+ <div class="meta"><span>バージョン 1.0</span><span>約240KB</span><span>Android 7.0 以上</span><span>横画面</span></div>
+ <section>
+  <h2>インストールのしかた</h2>
+  <ol>
+   <li>上の「APKをダウンロード」をタップします。</li>
+   <li>ダウンロードが終わったら、通知の「island-survival.apk」をタップします。</li>
+   <li>「不明なアプリのインストール」の確認が出たら、使っているブラウザ（Chromeなど）を許可します。</li>
+   <li>Androidのインストール画面で「インストール」を押します。</li>
+  </ol>
+  <p class="note">インストール画面はAndroidが表示するもので、このページから飛ばすことはできません。iPhoneではAPKを使えないので、下のWeb版をホーム画面に追加して遊んでください。</p>
+ </section>
+ <p class="alt">Web版（PWA）：<a href="https://claude.ai/artifact/1CmJczgPDjTEGfTDy8iNs4" target="_blank" rel="noopener">ブラウザで遊ぶ</a></p>
+</main>
