@@ -962,8 +962,8 @@ function findTarget(){camera.getWorldDirection(_dir);const o=camera.position;let
   const rr=(e.r||0.6)+0.25;const d=Math.hypot(px,py*(e.kind==='tree'?0.25:0.8),pz);if(d<rr){const sc=t+d*2;if(sc<bs){bs=sc;best=e}}}
  if(player.riding)best=player.riding;return best}
 function targetLabel(e){if(!e)return'';switch(e.kind){
- case'tree':return(hasTool('axe')?'[使う] 木を切る':'木（斧が必要）')+' ・ 体力 '+Math.ceil(e.hp)+'/'+e.max;
- case'rock':return(hasTool('axe')?'[使う] 岩を砕く':'岩（斧で砕ける）');
+ case'tree':return'[使う] 木を切る'+(hasTool('axe')?'':'（素手でも時間をかければ折れる）')+' ・ 体力 '+Math.ceil(e.hp)+'/'+e.max;
+ case'rock':return'[使う] 岩を砕く'+(hasTool('axe')?'':'（素手でも時間をかければ砕ける）');
  case'bush':return e.ripe?'[E] ベリーを摘む':'ベリーの茂み（実が育つのを待つ）';
  case'pick':return'[E] '+ITEMS[e.item].n+'を拾う';case'drop':return'[E] '+ITEMS[e.id].n+' ×'+e.n+'を拾う';
  case'chest':return e.opened?(e.name+'（空）'):'[E] '+e.name+'を開ける';case'drift':return'[E] 漂流物を調べる';
@@ -1018,10 +1018,10 @@ function primary(){if(state!=='play'||S.dead)return;if(placing){confirmPlace();r
  const reach=tool==='spear'?3.4:2.4;const dmg=tool?ITEMS[it.id].dmg:4;
  const hitA=hitAnimal(reach,dmg);if(hitA){if(tool)useDur(S.sel,1);return}
  const e=target;if(!e)return;
- if(e.kind==='tree'){if(tool!=='axe'&&tool!=='knife'){toast('木を切るには斧が必要');return}const pw=tool==='axe'?(ITEMS[it.id].pow||1):0.35;e.hp-=pw;sfx('chop');useDur(S.sel,1);leafBurst(e);
+ if(e.kind==='tree'){const pw=tool==='axe'?(ITEMS[it.id].pow||1):tool==='knife'?0.35:0.22;e.hp-=pw;sfx('chop');if(tool)useDur(S.sel,1);leafBurst(e);
   if(e.hp<=0){e.alive=false;e.g.hide(e.i);if(e.g2)e.g2.hide(e.i);IG.remove(e);fellTree(e);const w=e.sub==='giant'?10:e.sub==='palm'?3:5;setTimeout(()=>{invAdd('wood',w);invAdd('stick',2);if(e.sub==='palm')invAdd('coconut',1);toast('木材 ×'+w+'、枝 ×2 を手に入れた');goal('wood')},1400);
    e.resp=S.day+3;for(const c of CG.query(e.x,e.z,2,[]))if(c.ent===e){c.dead=true}}}
- else if(e.kind==='rock'){if(tool!=='axe'){toast('岩を砕くには斧が必要');return}e.hp-=ITEMS[it.id].pow||1;sfx('mine');useDur(S.sel,1);if(Math.random()<0.5)invAdd('stone',1);if(e.hp<=0){invAdd('stone',3);if(Math.random()<0.6)invAdd('flint',1);e.hp=e.max;toast('石と火打石を掘り出した')}}
+ else if(e.kind==='rock'){const bare=!tool;e.hp-=bare?0.25:(ITEMS[it.id].pow||1);sfx('mine');if(tool)useDur(S.sel,1);if(Math.random()<(bare?0.2:0.5))invAdd('stone',1);if(e.hp<=0){invAdd('stone',bare?1:3);if(!bare&&Math.random()<0.6)invAdd('flint',1);e.hp=e.max;toast(bare?'素手で岩を砕いた。石を拾った':'石と火打石を掘り出した')}}
  else if(e.kind==='bush'){interact()}}
 function secondary(){if(state!=='play')return;const s=selItem();if(s&&(ITEMS[s.id].food||ITEMS[s.id].drink))consume(S.sel)}
 function hitAnimal(reach,dmg){const o=player.pos;camera.getWorldDirection(_dir);let hit=null,bd=1e9;
